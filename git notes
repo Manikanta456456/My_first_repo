@@ -1,0 +1,162 @@
+GIT
+
+	
+
+To install git we need go to root user and give yum install git -y
+YUM-->Package manager in linux
+
+-Y---> to install wihtout permission 
+
+To check whether it got installed you can give--> git -v
+
+We need to initialize the git the command to do is --> git init
+
+ Go the directory cd foldername  then initialize git by giving git int
+
+  Create new files in it and give git status-->  this command will give the tracked and untracked status of the files
+
+To track the files--> git add filename
+
+ So as seen in the above image one step is completed as it is tracked and moved to staging area
+
+When you modify a tracking file we must commit.
+
+To commit a file --> git commit -m “message to print” filename
+message is mandatory.
+
+To show git commits and logs-->  git log 
+ We can see the commit id, who, when and 	the commit message in it.
+
+To see what is committed you can copy the commit Id and give  git show commitid
+
+To track all of your files at once----> git add *
+
+To commit all files at one go --> git commit -m “message to print” .
+
+ If we want to print our name as user->> git config user.name “mani”
+
+
+
+
+
+
+If you want to untrack the file from git--> git rm --cached filename
+To find latest 2 commit--> git log -n 3
+
+If you want to track every file expect few files--->vim .gitignore --> editor will open ---> give the file names which you want to hide there and save it.
+
+So whatever the files present in this will be ignored even you tried giving git add * 
+
+Note: It wont even show you in untracked list, you can see only using ll command.
+
+If you want to track back the file, remove the file name from vim.gitignore and save it then it will come to untrack list from there you can track using git add filename.
+
+If you want to remove the commit--> git reset --soft~1  --> NUMBER REPRESENT HOW MANY COMMITS TO BE DELETED
+
+If you want to remove the commit--> git reset --hard HEAD~1-->  this will delete both commit id and the data committed
+
+TO GET BACK THE DELETED COMMIT ID
+
+First we can get the deleted commit history--> git reflog
+Then you will get the commits list which was delted pick the commit id which you want to revert back and use this--> git cherry-pick commitid
+
+How to modify the commit message(only works in latest commit)
+Git commit --amend -m”new commit message” ---> The commit id will be also changed automatically
+
+If you want to attach the latest file which is in staging area to the recent commit---> git commit --amend --no-edit 
+
+
+BRANCHES CONCEPT
+
+Create a directory--> mkdir folername
+Go in to the folder -->cd foldername/
+Initialize git --> git init
+
+If we want to see the list of branches--> git branch
+
+As we havent commited we wont see any branches list. If you do any commit then you can see the branch list .
+
+create a file--> touch filename
+add it to the git --> git add filename
+Add some data into it vim filename
+Commit the file--> git commit -m”commit message” filename
+Now if you give git branch you can see the branch name
+
+Now we are in master branch so from here create another branch so that you will get all the data in it to the new created branch
+
+To create a branch---> create branch branch_name
+So lets move from master change to new branch and do some changes
+How to move from one branch to another branch--> git checkout Branch_name_which you want to move
+
+You will be moved the new branch there you create another file and add some data into it, add it to the git  and then commit the file
+
+if you want to move the new changes into master branch -->git merge new_branch_name which was create-->this will send the new changes to master directly.
+
+If you want to create a branch and switch it to the branch directly: git checkout -b branch_name
+If you want to delete branch --> git branch -d branch_name(you cannot delete the current branch or master branch)
+
+If you want to delete current branch you need to come to master branch and then delete it
+
+If you don’t merge the branch then you wont be able to delete the branch so to forcefully delete the brach -->git branch -D branch_name
+
+If you want to rename the branch --> git branch -m old_branch_name new_branch_name which you want to modify
+
+In a new branch you have done multiple commits and you need a particular commit only:
+
+Create a new branch and give mulitple commits in it.
+Get the log --> git log --oneline --> will give the commit log in one line
+Take the commit id  and Go to the master or any other branch where you want the change --> git cherry-pick commit_id
+
+There is one condition like if you commit a file a file in a branch and done some change again and then trying to go back to master: in this case you can go as the second changes are not merged so temporarily delete the second change you can give: git stash this will allow you to switch to master. If you want to the get the data made in second time you can give git stash apply
+
+In simple if you want to delete the file temporarly in staging area you can use stash command.
+
+Want to delete the recent stash--> git stash pop
+
+To delete entite stash--> git stash clear
+
+ 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GIT HUB
+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
+
+Two types of repositories
+1.Public--any body can access
+2.Private--only selected people can access
+
+To connect git with git hub repository git remote add origin github repo_URL (as shown below)
+
+Git hub link :https://github.com/Manikanta456456/My_first_repo
+
+
+
+To check if our server is connect to any repository: git remote -v
+
+If you  need to push the files to git hub you need to commit and then push:
+To push --> git push -u origin master(master indicates the changes from where you want to move)
+Next step you need to give github user name
+And then password: how to get password: profile--> settings-->Developer Settings-->under personal token click tokens (classic)--> generate new classic token 
+give any name in notes give token name(any thing)and select repo and click on generate token in the last
+
+
+
+
+
+You can see the changes in the github.
+
+If you want to pull the changes from github--> git pull origin repo_name
